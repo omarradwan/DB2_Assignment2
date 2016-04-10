@@ -18,13 +18,23 @@ public class PostgreSQLJDBC {
          System.out.println("Opened database successfully");
 
          stmt = c.createStatement();
-         String sql = "CREATE TABLE cup_matches" +
+         String sql1 = "CREATE TABLE cup_matches" +
                       "(mid INT PRIMARY KEY     NOT NULL," +
-                      " round           TEXT    NOT NULL, " +
+                      " round           varchar(50)    NOT NULL, " +
                       " year            INT     NOT NULL, " +
                       " num_ratings     INT, " +
                       " rating         REAL)";
-         stmt.executeUpdate(sql);
+                      
+         String sql2 = "CREATE TABLE player_in" +
+                 "(mid INT  references cup_matches(mid)   NOT NULL," +
+                 " name VARCHAR(50)        NOT NULL, " +
+                 " year            INT     NOT NULL, " +
+                 " position        INT, " +
+                 " primary key(mid , name))";
+         
+
+         stmt.executeUpdate(sql1);
+         stmt.executeUpdate(sql2);
          stmt.close();
          c.close();
        } catch ( Exception e ) {

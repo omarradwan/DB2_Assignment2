@@ -2,7 +2,7 @@ import java.sql.*;
 
 import java.sql.*;
 
-//commit
+//commit2
 public class PostgreSQLJDBC {
    public static void main( String args[] ) throws SQLException
      {
